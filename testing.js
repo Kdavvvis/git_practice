@@ -26,14 +26,29 @@ const weatherConditions = [
   ];
 
   function randIndex(array){
-    var indexes = Math.random()*array.length;
-    return indexes -1;
+    var indexes = Math.floor(Math.random()*array.length);
+    return indexes;
+
+  }
+  function randomDegrees(){
+    var degrees = Math.floor(Math.random()*100);
+    return degrees
+  }
+
+  function getWeatherAdvice(arr1 = weatherConditions, arr2 = temperatureScales, arr3 = quirkyAdvice){
+    const temp = randomDegrees();
+    var moreless = ''
+    if(temp > 50){
+      moreless = 'with a high of';
+    }
+    else{
+      moreless = 'with a low of';
+    }
+    return `Today's forecast: ${arr1[randIndex(arr1)]} ${moreless} ${temp} ${arr2[randIndex(arr2)]}! Remember to dress whimsically! ${arr3[randIndex(arr3)]}`;
+
+
 
   }
 
-  function getWeatherAdvice(){
-
-  }
-
-  console.log(randIndex(weatherConditions));
+  console.log(getWeatherAdvice(weatherConditions, temperatureScales, quirkyAdvice));
 
